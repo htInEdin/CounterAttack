@@ -1,1 +1,57 @@
-/etc/fail2ban/jail.local
+[DEFAULT]
+ignoreip = 129.215.62.33 88.97.57.212 129.215.24.150 83.106.142.23 217.65.134.0/24 82.132.228.133 86.158.63.0/24 86.210.54.0/24 89.207.175.0/24 192.41.125.0/24 174.242.68.0/24 84.68.113.21 2001:630:3c1:24:3aca:84ff:fe42:5694
+banaction = blacklist
+bantime  = 1w
+findtime = 1d
+hashsize = 1024
+maxelem = 65536
+hashsize6 = 1024
+maxelem6 = 65536
+
+[apache-shellshock]
+enabled = true
+
+[apache-modsecurity]
+
+[apache-fakegooglebot]
+enabled = true
+
+[apache-botsearch]
+enabled = true
+
+[apache-nohome]
+enabled = true
+
+[apache-overflows]
+enabled = true
+
+[apache-badbots]
+enabled = true
+
+[apache-auth]
+enabled = true
+maxretry = 2
+
+[apache-get-hg]
+enabled = true
+port     = http,https
+logpath  = %(apache_m_access_log)s
+maxretry = 1
+findtime = 600
+bantime = 1w
+banaction = blacklist[hashsize=524288,maxelem=524288,
+                      hashsize6=32768,maxelem6=131072]
+
+[apache-get-php]
+enabled = true
+port     = http,https
+logpath  = %(apache_e_access_log)s
+maxretry = 1
+findtime = 600
+bantime = 1w
+banaction = blacklist[hashsize=2048,maxelem=65536,
+                      hashsize6=1024,maxelem6=32768]
+
+[exim]
+enabled = true
+maxretry = 10

@@ -1,1 +1,2 @@
-/etc/shorewall6/blrules
+DROP:$ALOG net:+shorewall6-apache-get-hg $FW
+DROP:$ALOG net:+shorewall6-apache-get-php $FW

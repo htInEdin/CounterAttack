@@ -1,1 +1,7 @@
-/etc/shorewall/blrules
+#ACTION      SOURCE           DEST     PROTO    DPORT
+DROP:$ALOG net:+shorewall-apache-badbots $FW
+DROP:$ALOG net:+shorewall-apache-auth $FW
+DROP:$ALOG net:+shorewall-apache-fakegooglebot $FW
+DROP:$ALOG net:+shorewall-exim $FW
+DROP:$ALOG net:+shorewall-apache-get-hg $FW
+DROP:$ALOG net:+shorewall-apache-get-php $FW
